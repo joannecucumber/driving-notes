@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#20251e">
+  <title>考場練習筆記 · 互動路線圖</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="notes.js" defer></script>
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <main id="main">
+    <div class="layout">
+      <section class="map-card" aria-label="互動考場地圖">
+        <div class="map-toolbar"><span class="section-label"><span class="status-dot" aria-hidden="true"></span>考場平面圖</span><div class="tools"><label class="marker-toggle"><input id="show-markers" type="checkbox" checked>顯示標記</label><button id="zoom" class="text-button" type="button" aria-pressed="false">放大地圖 <span aria-hidden="true">↗</span></button></div></div>
+        <div class="map-viewport" id="map-viewport" tabindex="0" aria-label="考場地圖；放大後可捲動查看">
+          <div class="map-stage" id="map-stage">
+            <img id="map-image" src="map.png" width="1261" height="1247" alt="駕訓班考場平面圖，含內外側道路、三組 S 彎及停車練習區。使用圖上編號或右側筆記清單查看提醒。" draggable="false">
+            <div id="markers" aria-label="18 個注意事項"></div>
+          </div>
+        </div>
+        <div class="map-footer"><span><kbd>Esc</kbd> 關閉提示<span class="footer-divider">·</span>手機輕點編號</span><span id="selection-status" role="status">18 則筆記已就位</span></div>
+        <p id="image-error" role="alert" hidden>地圖載入失敗，請確認 map.png 與網頁放在同一個資料夾，或開啟單檔版網頁。</p>
+      </section>
+      <aside class="notes-panel" aria-label="注意事項清單">
+        <div class="notes-heading"><div><p class="eyebrow">YOUR NOTES</p><h2>路上的小提醒</h2></div><span class="count-badge">18</span></div>
+        <p class="panel-hint">點選筆記，找到地圖上的位置。</p>
+        <ol id="note-list" class="note-list"></ol>
+        <div class="panel-footer"><span aria-hidden="true">↖</span> 圖上的數字是筆記編號，非行車順序。</div>
+      </aside>
+    </div>
+    <footer class="page-footer"><span>依你的 18 則個人練習筆記整理</span><span>把每一次練習，記得更清楚。</span></footer>
+  </main>
+  <section id="note-popover" class="note-popover" role="region" aria-labelledby="popover-title" hidden>
+    <div class="popover-top"><span id="popover-label" class="eyebrow"></span><button id="close-popover" type="button" class="close-button" aria-label="關閉注意事項">×</button></div>
+    <h2 id="popover-title"></h2>
+    <div id="popover-content"></div>
+    <div id="popover-hint" class="popover-hint"></div>
+  </section>
+  <noscript><p class="noscript">請開啟 JavaScript 以使用圖上的互動提醒。</p></noscript>
+</body>
+</html>
